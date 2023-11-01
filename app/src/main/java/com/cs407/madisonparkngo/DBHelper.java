@@ -1,4 +1,25 @@
 package com.cs407.madisonparkngo;
 
-public class DBHelper {
+import android.content.Context;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+@Database(entities = {ParkingLot.class}, version = 1)
+public abstract class DBHelper extends RoomDatabase {
+
+    public abstract UserDao userDao();
+
+    private static DBHelper INSTANCE;
+
+    public static DBHelper getDBInstance(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DBHelper.class, "DB_NAME")
+                    .allowMainThreadQueries()
+                    .build();
+        }
+
+        return INSTANCE;
+    }
 }

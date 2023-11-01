@@ -1,6 +1,12 @@
 package com.cs407.madisonparkngo;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class ParkingLot {
+    @PrimaryKey(autoGenerate = false)
+    private int lotID;
     private String name;
     private String address;
     private int motorcycle;
@@ -13,7 +19,9 @@ public class ParkingLot {
     private String timeClose;
     private String specialInfo;
 
-    public ParkingLot(String name, String address, int motorcycle, int car, int moped, String typeOfLot, String permit, String cost, String timeOpen, String timeClose, String specialInfo) {
+
+    public ParkingLot(int lotID, String name, String address, int motorcycle, int car, int moped, String typeOfLot, String permit, String cost, String timeOpen, String timeClose, String specialInfo) {
+        this.lotID = lotID;
         this.name = name;
         this.address = address;
         this.motorcycle = motorcycle;
@@ -27,6 +35,7 @@ public class ParkingLot {
         this.specialInfo = specialInfo;
     }
 
+    public int getLotID(){return lotID;}
     public String getName(){return name;}
     public String getAddress(){return address;}
     public Boolean allowsMotorcycle(){
