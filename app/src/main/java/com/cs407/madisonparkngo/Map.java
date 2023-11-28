@@ -4,7 +4,7 @@ package com.cs407.madisonparkngo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
-
+import android.content.Intent;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -42,10 +42,15 @@ public class Map extends FragmentActivity {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
-            mMap = googleMap;
-            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
-            displayMyLocation();
-        });
+                    mMap = googleMap;
+                    googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+                    displayMyLocation();
+
+                    googleMap.setOnMarkerClickListener(marker -> {
+                        handleMarkerClick();
+                        return true;
+                    });
+                });
 
         mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -122,9 +127,12 @@ public class Map extends FragmentActivity {
     }
 
 
-
-
-
+    private void handleMarkerClick() {
+        // Start the lotInformation activity
+        Intent intent = new Intent(Map.this, lotInformation.class);
+        //intent.putExtra("markerTitle", clickedMarker.getTitle());
+        startActivity(intent);
+    }
 
 
 
