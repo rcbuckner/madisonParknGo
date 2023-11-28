@@ -51,4 +51,14 @@
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="160dp" />
 
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Back"
+        app:layout_constraintTop_toBottomOf="@id/buttonProximity"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="205dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

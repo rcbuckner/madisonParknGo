@@ -9,7 +9,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.PermissionRequest;
+import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -47,9 +49,87 @@ public class Map extends FragmentActivity {
 
         mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+        Button buttonBack = findViewById(R.id.buttonBack);
+
+        // Set onClickListeners
+        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
+        buttonLotType.setOnClickListener(v -> handleLotTypeClick());
+        buttonCost.setOnClickListener(v -> handleCostClick());
+        buttonProximity.setOnClickListener(v -> handleProximityClick());
+        buttonBack.setOnClickListener(v -> handleBackClick());
 
 
     }
+
+    private void handleVehicleTypeClick() {
+        // Get references to the other buttons
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+        Button buttonBack = findViewById(R.id.buttonBack);
+
+        // Change the texts of the buttons
+        buttonLotType.setText("Moped");
+        buttonCost.setText("Car");
+        buttonProximity.setText("Motorcycle");
+
+        // Set new onClickListeners for the buttons to define their new actions
+        //NOTDEFINED YET
+//        buttonLotType.setOnClickListener(v -> handleMopedClick());
+//        buttonCost.setOnClickListener(v -> handleCarClick());
+//        buttonProximity.setOnClickListener(v -> handleMotorcycleClick());
+        // Keep the back button's functionality as is, or modify if needed
+    }
+
+    private void handleLotTypeClick() {
+
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+
+        // Change the texts of the buttons
+        buttonVehicleType.setText("Lot Type");
+        buttonLotType.setText("Garage");
+        buttonCost.setText("Surface Lot");
+        buttonProximity.setText("Street");
+    }
+
+    private void handleCostClick() {
+        // Cost button functionality
+    }
+
+    private void handleProximityClick() {
+        // Proximity button functionality
+    }
+
+    private void handleBackClick() {
+
+        // Reset the onClickListeners for the buttons
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+
+        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
+        buttonLotType.setOnClickListener(v -> handleLotTypeClick());
+        buttonCost.setOnClickListener(v -> handleCostClick());
+        buttonProximity.setOnClickListener(v -> handleProximityClick());
+    }
+
+
+
+
+
+
+
+
+
+
     private void displayMyLocation(){
         int permission= ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
         if (permission== PackageManager.PERMISSION_DENIED){
