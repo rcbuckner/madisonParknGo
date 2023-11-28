@@ -60,26 +60,7 @@ public class MapDestination extends FragmentActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
 
         }
-        else {
-            mfusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, task ->{
-                Location mLastKnownLocation = task.getResult();
-                if (task.isSuccessful() && mLastKnownLocation != null){
-                    mMap.addPolyline(new PolylineOptions().add(
-                            new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude()), mDestinationLatLng));
 
-                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
-                    mapFragment.getMapAsync(googleMap -> {
-                        mMap = googleMap;
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude())).title("Last Known Location"));
-                        displayMyLocation();
-                    });
-                }
-
-
-
-            });
-
-        }
 
 
     };
