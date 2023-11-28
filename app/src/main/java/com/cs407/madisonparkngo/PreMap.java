@@ -25,6 +25,24 @@ public class PreMap extends AppCompatActivity {
         TextView dateTextView = findViewById(R.id.dateTextView);
         dateTextView.setText("Today's Date: " + currentDate);
 
+        Button button = findViewById(R.id.getNearbyLotsButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the SecondActivity
+                Intent intent = new Intent(PreMap.this, Map.class);
+                startActivity(intent);
+            }
+        });
+        Button button2 = findViewById(R.id.continueButton);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the SecondActivity
+                Intent intent = new Intent(PreMap.this, Map.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
