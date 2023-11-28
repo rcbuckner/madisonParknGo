@@ -67,6 +67,7 @@ public class Map extends FragmentActivity {
         buttonCost.setOnClickListener(v -> handleCostClick());
         buttonProximity.setOnClickListener(v -> handleProximityClick());
         buttonBack.setOnClickListener(v -> handleBackClick());
+        buttonListView.setOnClickListener(v -> handleListViewClick());
 
     }
 
@@ -150,6 +151,19 @@ public class Map extends FragmentActivity {
         buttonLotType.setOnClickListener(v -> handleLotTypeClick());
         buttonCost.setOnClickListener(v -> handleCostClick());
         buttonProximity.setOnClickListener(v -> handleProximityClick());
+    }
+
+    private void handleListViewClick() {
+        Button buttonListView = findViewById(R.id.buttonListview);
+        buttonListView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the SecondActivity
+                Intent intent = new Intent(Map.this, Listview.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

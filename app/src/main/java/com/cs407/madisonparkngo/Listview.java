@@ -1,0 +1,36 @@
+package com.cs407.madisonparkngo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class Listview extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private LotAdapter lotAdapter;
+    private List<Lot> lotList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.listview);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Initialize your lotList with data
+        lotList = new ArrayList<>();
+        // Add lots to lotList
+
+        lotAdapter = new LotAdapter(this, lotList);
+        recyclerView.setAdapter(lotAdapter);
+
+    }
+}
