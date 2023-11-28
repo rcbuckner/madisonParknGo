@@ -38,6 +38,10 @@ public class ParkingLot {
     public int getLotID(){return lotID;}
     public String getName(){return name;}
     public String getAddress(){return address;}
+    public int getMotorcycle(){return  motorcycle;}
+    public int getCar() {return car;}
+    public int getMoped() {return moped;}
+
     public Boolean allowsMotorcycle(){
         if(motorcycle == 1) {
             return true;
