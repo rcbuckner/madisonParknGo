@@ -35,7 +35,8 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".Listview"></activity>
+        <activity android:name=".lotInformation" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBMdEJ0bXnYZoqLxO_eSqT9RNwQVxchVXU"
