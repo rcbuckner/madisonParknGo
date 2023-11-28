@@ -62,7 +62,6 @@ public class Map extends FragmentActivity {
         buttonProximity.setOnClickListener(v -> handleProximityClick());
         buttonBack.setOnClickListener(v -> handleBackClick());
 
-
     }
 
     private void handleVehicleTypeClick() {
@@ -97,14 +96,34 @@ public class Map extends FragmentActivity {
         buttonLotType.setText("Garage");
         buttonCost.setText("Surface Lot");
         buttonProximity.setText("Street");
+
+
     }
 
     private void handleCostClick() {
-        // Cost button functionality
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+
+        // Change the texts of the buttons
+        buttonVehicleType.setText("Cost");
+        buttonLotType.setText("$0-$1");
+        buttonCost.setText("$1-$2");
+        buttonProximity.setText("More Than $2");
     }
 
     private void handleProximityClick() {
-        // Proximity button functionality
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+
+        // Change the texts of the buttons
+        buttonVehicleType.setText("Proximity to Destination");
+        buttonLotType.setText("0 - 0.5 Miles");
+        buttonCost.setText("0.5 - 1 Miles");
+        buttonProximity.setText("More Than 1 Miles");
     }
 
     private void handleBackClick() {
@@ -114,6 +133,12 @@ public class Map extends FragmentActivity {
         Button buttonLotType = findViewById(R.id.buttonLotType);
         Button buttonCost = findViewById(R.id.buttonCost);
         Button buttonProximity = findViewById(R.id.buttonProximity);
+
+        buttonVehicleType.setText("Vehicle Type");
+        buttonLotType.setText("Lot Type");
+        buttonCost.setText("Cost");
+        buttonProximity.setText("Proximity to Destination");
+
 
         buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
         buttonLotType.setOnClickListener(v -> handleLotTypeClick());
