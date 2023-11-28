@@ -23,6 +23,16 @@ public class Listview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
 
+        Button buttonMapview = findViewById(R.id.buttonMapview);
+        buttonMapview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate back to Map activity
+                Intent intent = new Intent(Listview.this, Map.class);
+                startActivity(intent);
+            }
+        });
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -32,6 +42,7 @@ public class Listview extends AppCompatActivity {
 
         lotAdapter = new LotAdapter(this, lotList);
         recyclerView.setAdapter(lotAdapter);
+
 
     }
 }

@@ -7,7 +7,7 @@
 
 
     <Button
-        android:id="@+id/buttonListview"
+        android:id="@+id/buttonMapview"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginBottom="56dp"
@@ -20,6 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonListview" />
+        app:layout_constraintBottom_toTopOf="@id/buttonMapview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
