@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class LotAdapter extends RecyclerView.Adapter<LotAdapter.LotViewHolder> {
 
     private List<Lot> lotList; // Assuming Lot is a class representing your parking lot data
@@ -22,7 +24,7 @@ public class LotAdapter extends RecyclerView.Adapter<LotAdapter.LotViewHolder> {
     @NonNull
     @Override
     public LotViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lot, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lot_item, parent, false);
         return new LotViewHolder(view);
     }
 
