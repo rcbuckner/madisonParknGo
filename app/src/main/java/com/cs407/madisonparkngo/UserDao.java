@@ -1,6 +1,7 @@
 package com.cs407.madisonparkngo;
 
 import androidx.room.Dao;
+import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
@@ -27,5 +28,8 @@ public interface UserDao {
 
     @Query("SELECT * FROM parkinglot WHERE cost < :limit")
     List<ParkingLot> getPricedLots(int limit);
+
+    @Insert
+    void insertLot(ParkingLot... parkingLot);
 
 }
