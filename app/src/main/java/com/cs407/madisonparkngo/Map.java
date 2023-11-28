@@ -59,6 +59,7 @@ public class Map extends FragmentActivity {
         Button buttonCost = findViewById(R.id.buttonCost);
         Button buttonProximity = findViewById(R.id.buttonProximity);
         Button buttonBack = findViewById(R.id.buttonBack);
+        Button buttonListView = findViewById(R.id.buttonListview);
 
         // Set onClickListeners
         buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
@@ -142,7 +143,7 @@ public class Map extends FragmentActivity {
         buttonVehicleType.setText("Vehicle Type");
         buttonLotType.setText("Lot Type");
         buttonCost.setText("Cost");
-        buttonProximity.setText("Proximity to Destination");
+        buttonProximity.setText("More Than 1 Miles");
 
 
         buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
