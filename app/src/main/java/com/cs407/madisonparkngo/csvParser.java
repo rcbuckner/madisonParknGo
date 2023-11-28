@@ -1,9 +1,12 @@
 package com.cs407.madisonparkngo;
 
 import android.content.Context;
+import android.util.Log;
 
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,11 +16,11 @@ public abstract class csvParser {
 
         try
         {
-            File file = new File("parkingLots.csv");
-            scnr = new Scanner(file);
+            DataInputStream textFileStream = new DataInputStream(context.getAssets().open(String.format("parkingLots.csv")));
+            scnr = new Scanner(textFileStream);
         }
-        catch (FileNotFoundException e){
-            System.out.println("file not found");
+        catch (IOException e){
+            Log.i("FileNotFound", "Did Not Find parkingLots.csv");
             return;
         }
 
