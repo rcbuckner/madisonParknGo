@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
         csvParser.parse(this.getApplicationContext());
         Log.i("Test DB Creation", "DB at first lotID: " +
-                DBHelper.getDBInstance(this.getApplicationContext()).userDao().getSpecificLOt(1));
+                DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().get(0).getName());
     }
 }
