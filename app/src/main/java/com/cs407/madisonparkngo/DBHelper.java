@@ -15,7 +15,7 @@ public abstract class DBHelper extends RoomDatabase {
 
     public static DBHelper getDBInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DBHelper.class, "parkinglot")
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), DBHelper.class, "DB_NAME")
                     .allowMainThreadQueries()
                     .build();
         }
