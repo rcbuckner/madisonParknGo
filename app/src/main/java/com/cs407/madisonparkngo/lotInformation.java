@@ -23,5 +23,16 @@ public class lotInformation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Button takeMeThereButton = findViewById(R.id.buttonTakeMeThere);
+        takeMeThereButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to MapDestination activity
+                Intent intent = new Intent(lotInformation.this, MapDestination.class);
+                startActivity(intent);
+            }
+        });
     }
 }
