@@ -26,8 +26,8 @@ public interface UserDao {
     @Query("SELECT * FROM parkinglot WHERE permit LIKE :permit")
     List<ParkingLot> getIfPermit(String permit);
 
-    @Query("SELECT * FROM parkinglot WHERE cost < :limit")
-    List<ParkingLot> getPricedLots(int limit);
+    @Query("SELECT * FROM parkinglot WHERE cost < :maxLimit AND cost > :minLimit")
+    List<ParkingLot> getPricedLots(int maxLimit, int minLimit);
 
     @Query("SELECT * FROM parkinglot WHERE lotID = :id")
     ParkingLot getSpecificLOt(int id);
