@@ -4,6 +4,8 @@ package com.cs407.madisonparkngo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -22,7 +24,7 @@ import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.CameraPosition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,35 +40,16 @@ public class Map extends FragmentActivity {
     private static final int DEFAULT_ZOOM = 15;
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085); // This should be a sensible default for your app
 
-    List<ParkingLot> locationList = DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots();
+    List<ParkingLot> locationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
-        mapFragment.getMapAsync(googleMap -> {
-                    mMap = googleMap;
+        locationList = DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots();
 
-                    // Loop through the list and add a marker for each location
-                    for (ParkingLot location : locationList) {
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
-                    }
-
-
-                    googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
-                    displayMyLocation();
-
-                    googleMap.setOnMarkerClickListener(marker -> {
-                        handleMarkerClick(marker);
-                        return true;
-
-                    });
-
-                });
-
-        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        updateMap(null, getApplicationContext());
 
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         Button buttonLotType = findViewById(R.id.buttonLotType);
@@ -76,19 +59,49 @@ public class Map extends FragmentActivity {
         Button buttonListView = findViewById(R.id.buttonListview);
 
         // Set onClickListeners
-        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
-        buttonLotType.setOnClickListener(v -> handleLotTypeClick());
-        buttonCost.setOnClickListener(v -> handleCostClick());
-        buttonProximity.setOnClickListener(v -> handleProximityClick());
-        buttonBack.setOnClickListener(v -> handleBackClick());
-        buttonListView.setOnClickListener(v -> handleListViewClick());
+        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick(this.getApplicationContext()));
+        buttonLotType.setOnClickListener(v -> handleLotTypeClick(this.getApplicationContext()));
+        buttonCost.setOnClickListener(v -> handleCostClick(this.getApplicationContext()));
+        buttonProximity.setOnClickListener(v -> handleProximityClick(this.getApplicationContext()));
+        buttonBack.setOnClickListener(v -> handleBackClick(this.getApplicationContext()));
+        buttonListView.setOnClickListener(v -> handleListViewClick(this.getApplicationContext()));
 
 
 
 
     }
 
-    private void handleVehicleTypeClick() {
+    private void updateMap(List<ParkingLot> newLot, Context context) {
+        if (newLot != null) {
+            ListHelper.mergeLists(locationList, newLot);
+        }
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
+        mapFragment.getMapAsync(googleMap -> {
+            mMap = googleMap;
+
+            // Loop through the list and add a marker for each location
+            for (ParkingLot location : locationList) {
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
+            }
+
+
+            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+            displayMyLocation();
+
+            googleMap.setOnMarkerClickListener(marker -> {
+                handleMarkerClick(marker);
+                return true;
+
+            });
+
+        });
+
+        mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
+    }
+    private void handleVehicleTypeClick(Context context) {
         // Get references to the other buttons
         Button buttonLotType = findViewById(R.id.buttonLotType);
         Button buttonCost = findViewById(R.id.buttonCost);
@@ -102,13 +115,15 @@ public class Map extends FragmentActivity {
 
         // Set new onClickListeners for the buttons to define their new actions
         //NOTDEFINED YET
-//        buttonLotType.setOnClickListener(v -> handleMopedClick());
+        buttonLotType.setOnClickListener(v -> {
+            updateMap(DBHelper.getDBInstance(context).userDao().getMopedLots(), context);
+        });
 //        buttonCost.setOnClickListener(v -> handleCarClick());
 //        buttonProximity.setOnClickListener(v -> handleMotorcycleClick());
         // Keep the back button's functionality as is, or modify if needed
     }
 
-    private void handleLotTypeClick() {
+    private void handleLotTypeClick(Context context) {
 
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         Button buttonLotType = findViewById(R.id.buttonLotType);
@@ -124,7 +139,7 @@ public class Map extends FragmentActivity {
 
     }
 
-    private void handleCostClick() {
+    private void handleCostClick(Context context) {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         Button buttonLotType = findViewById(R.id.buttonLotType);
         Button buttonCost = findViewById(R.id.buttonCost);
@@ -137,7 +152,7 @@ public class Map extends FragmentActivity {
         buttonProximity.setText("More Than $2");
     }
 
-    private void handleProximityClick() {
+    private void handleProximityClick(Context context) {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         Button buttonLotType = findViewById(R.id.buttonLotType);
         Button buttonCost = findViewById(R.id.buttonCost);
@@ -150,7 +165,7 @@ public class Map extends FragmentActivity {
         buttonProximity.setText("More Than 1 Miles");
     }
 
-    private void handleBackClick() {
+    private void handleBackClick(Context context) {
 
         // Reset the onClickListeners for the buttons
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
@@ -164,13 +179,13 @@ public class Map extends FragmentActivity {
         buttonProximity.setText("Proximity to Destination");
 
 
-        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
-        buttonLotType.setOnClickListener(v -> handleLotTypeClick());
-        buttonCost.setOnClickListener(v -> handleCostClick());
-        buttonProximity.setOnClickListener(v -> handleProximityClick());
+        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick(context));
+        buttonLotType.setOnClickListener(v -> handleLotTypeClick(context));
+        buttonCost.setOnClickListener(v -> handleCostClick(context));
+        buttonProximity.setOnClickListener(v -> handleProximityClick(context));
     }
 
-    private void handleListViewClick() {
+    private void handleListViewClick(Context context) {
         Button buttonListView = findViewById(R.id.buttonListview);
         buttonListView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,8 +223,6 @@ public class Map extends FragmentActivity {
             mfusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, task ->{
                 Location mLastKnownLocation = task.getResult();
                 if (task.isSuccessful() && mLastKnownLocation != null){
-                    mMap.addPolyline(new PolylineOptions().add(
-                            new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude()), mDestinationLatLng));
 
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
                     mapFragment.getMapAsync(googleMap -> {
