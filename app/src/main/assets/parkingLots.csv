@@ -1,3 +1,4 @@
+LotID,Name (N/A if none),Address,Motorcycle ,Car,Moped ,Type of Lot,Permit ,Cost/Rate,Time Open ,Time Close,Special Info ,Latitude,Longitude
 1,Union South Garage,1308 W. Dayton Street,1,1,1,Garage,Both (Permit or Pay),$2.00 Per Hour,7:00 AM,11:59 PM,"Rate applies from 7:00 AM to 4:29 PM, Evening rate of $1 per hour in effect 4:30PM to 11:59PM, $15 daytime session maximum",43.07185,-89.40789
 2,Bakke REcreation and Wellness Center,632 Willow Drive,1,1,1,Surface Lot,Yes,$0.00,0:00,23:59,"Lot specific permit required Monday-Friday 7:00 AM to 4:30 PM, Free parking outside these times",43.08074,-89.42873
 6,Lot 6: HC White Garage,600 N. Park St,1,1,1,Garage,Both (Permit or Pay),$0.80 Per Hour,4:00 AM,11:59 PM,N/A,43.07666,-89.40136

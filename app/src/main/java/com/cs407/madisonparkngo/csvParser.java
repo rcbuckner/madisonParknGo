@@ -58,6 +58,9 @@ public abstract class csvParser {
                     if(startIndex == index) {
                         items[itemNum] = "";
                     }
+                    else if (index == charArray.length-1) {
+                        items[itemNum] = line.substring(startIndex, index+1);
+                    }
                     else {
                         items[itemNum] = line.substring(startIndex, index);
                         //System.out.println(line.substring(startIndex, index));
@@ -74,7 +77,7 @@ public abstract class csvParser {
 
             DBHelper.getDBInstance(context).userDao().insertLot(lot);
 
-            //for (int i = 0; i < 12; i ++) {
+            //for (int i = 0; i < NUM_COLUMNS; i ++) {
             //    System.out.println(items[i]);
             //}
 
