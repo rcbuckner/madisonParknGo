@@ -70,4 +70,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 
+    <Button
+        android:id="@+id/buttonResetFilters"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="11dp"
+        android:text="Reset Filters"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
