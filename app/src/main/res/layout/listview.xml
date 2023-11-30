@@ -22,4 +22,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/buttonMapview" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
