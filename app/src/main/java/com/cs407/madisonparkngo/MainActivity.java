@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         if (DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size() == 0) {
             csvParser.parse(this.getApplicationContext());
         }
-        Log.i("Test DB Creation", "DB at first lotID: " +
+        Log.i("Test DB Creation", "DB Size: " +
                 DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size());
     }
 }
