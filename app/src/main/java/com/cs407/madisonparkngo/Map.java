@@ -20,8 +20,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
 
 public class Map extends FragmentActivity {
 
@@ -34,6 +37,7 @@ public class Map extends FragmentActivity {
     private static final int DEFAULT_ZOOM = 15;
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085); // This should be a sensible default for your app
 
+    ArrayList<LatLng> locationList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +47,18 @@ public class Map extends FragmentActivity {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
                     mMap = googleMap;
+
+                    // Loop through the list and add a marker for each location
+                    for (LatLng location : locationList) {
+                        googleMap.addMarker(new MarkerOptions().position(location).title("Marker Title"));
+                    }
+
+
                     googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
                     displayMyLocation();
 
                     googleMap.setOnMarkerClickListener(marker -> {
-                        handleMarkerClick();
+                        handleMarkerClick(marker);
                         return true;
 
                     });
@@ -172,10 +183,13 @@ public class Map extends FragmentActivity {
     }
 
 
-    private void handleMarkerClick() {
-        // Start the lotInformation activity
+    private void handleMarkerClick(Marker marker) {
+        // Start the LotInformation activity
         Intent intent = new Intent(Map.this, lotInformation.class);
-        //intent.putExtra("markerTitle", clickedMarker.getTitle());
+        intent.putExtra("markerTitle", marker.getTitle());
+        intent.putExtra("markerLat", marker.getPosition().latitude);
+        intent.putExtra("markerLng", marker.getPosition().longitude);
+        // Add any other marker-specific data you need to pass
         startActivity(intent);
     }
 

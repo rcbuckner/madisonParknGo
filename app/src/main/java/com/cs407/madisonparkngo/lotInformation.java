@@ -14,6 +14,11 @@ public class lotInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lot_information);
 
+        // Get data from intent
+        String markerTitle = getIntent().getStringExtra("markerTitle");
+        double markerLat = getIntent().getDoubleExtra("markerLat", 0);
+        double markerLng = getIntent().getDoubleExtra("markerLng", 0);
+
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish()); // Finish the current activity
 
