@@ -49,7 +49,9 @@ public class Map extends FragmentActivity {
                     googleMap.setOnMarkerClickListener(marker -> {
                         handleMarkerClick();
                         return true;
+
                     });
+
                 });
 
         mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -68,6 +70,9 @@ public class Map extends FragmentActivity {
         buttonProximity.setOnClickListener(v -> handleProximityClick());
         buttonBack.setOnClickListener(v -> handleBackClick());
         buttonListView.setOnClickListener(v -> handleListViewClick());
+
+
+
 
     }
 
@@ -142,9 +147,9 @@ public class Map extends FragmentActivity {
         Button buttonProximity = findViewById(R.id.buttonProximity);
 
         buttonVehicleType.setText("Vehicle Type");
-        buttonLotType.setText("Lot Type");
+        buttonLotType.setText("Type of Lot");
         buttonCost.setText("Cost");
-        buttonProximity.setText("More Than 1 Miles");
+        buttonProximity.setText("Proximity to Destination");
 
 
         buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());

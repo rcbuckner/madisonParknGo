@@ -50,7 +50,8 @@ public class MapDestination extends FragmentActivity {
             displayMyLocation();
 
             });
-
+        Button backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(v -> finish()); // Finish the current activity
 
         mfusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 

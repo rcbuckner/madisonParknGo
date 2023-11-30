@@ -15,14 +15,7 @@ public class lotInformation extends AppCompatActivity {
         setContentView(R.layout.lot_information);
 
         Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Navigate back to Map activity
-                Intent intent = new Intent(lotInformation.this, Map.class);
-                startActivity(intent);
-            }
-        });
+        backButton.setOnClickListener(v -> finish()); // Finish the current activity
 
 
         Button takeMeThereButton = findViewById(R.id.buttonTakeMeThere);
