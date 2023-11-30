@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,6 +36,7 @@ public class MapDestination extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_destination);
 
+        // Show a Toast message
 
         // Get destination from intent
 //        double destLat = getIntent().getDoubleExtra("DEST_LAT", 0);
