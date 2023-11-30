@@ -51,7 +51,7 @@ public class Map extends FragmentActivity {
 
                     // Loop through the list and add a marker for each location
                     for (ParkingLot location : locationList) {
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title("Marker Title"));
+                        googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
                     }
 
 
