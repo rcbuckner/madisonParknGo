@@ -15,6 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.welcome_screen);
 
+        if (DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size() == 0) {
+            csvParser.parse(this.getApplicationContext());
+        }
+        Log.i("Test DB Creation", "DB Size: " +
+                DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size());
+
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,12 +31,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setContentView(R.layout.activity_main);
-
-        if (DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size() == 0) {
-            csvParser.parse(this.getApplicationContext());
-        }
-        Log.i("Test DB Creation", "DB Size: " +
-                DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().size());
     }
 }
