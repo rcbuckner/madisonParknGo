@@ -20,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -47,6 +48,7 @@ public class MapDestination extends FragmentActivity {
         mapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
             googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+            moveCamera();
             displayMyLocation();
 
             });
@@ -85,5 +87,12 @@ public class MapDestination extends FragmentActivity {
         return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
     }
 
+    private void moveCamera(){
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(mDestinationLatLng)
+                .zoom(11.5f)
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
 }
