@@ -1,8 +1,16 @@
 package com.cs407.madisonparkngo;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class ParkingLot {
+    @PrimaryKey(autoGenerate = false)
+    private int lotID;
     private String name;
     private String address;
+    private float latitude;
+    private float longitude;
     private int motorcycle;
     private int car;
     private int moped;
@@ -13,7 +21,11 @@ public class ParkingLot {
     private String timeClose;
     private String specialInfo;
 
-    public ParkingLot(String name, String address, int motorcycle, int car, int moped, String typeOfLot, String permit, String cost, String timeOpen, String timeClose, String specialInfo) {
+
+    public ParkingLot(int lotID, String name, String address, int motorcycle, int car, int moped,
+                      String typeOfLot, String permit, String cost, String timeOpen, String timeClose,
+                      String specialInfo, float latitude, float longitude) {
+        this.lotID = lotID;
         this.name = name;
         this.address = address;
         this.motorcycle = motorcycle;
@@ -25,10 +37,19 @@ public class ParkingLot {
         this.timeOpen = timeOpen;
         this.timeClose = timeClose;
         this.specialInfo = specialInfo;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
+    public int getLotID(){return lotID;}
     public String getName(){return name;}
     public String getAddress(){return address;}
+    public float getLongitude() {return longitude;}
+    public float getLatitude() {return latitude;}
+    public int getMotorcycle(){return  motorcycle;}
+    public int getCar() {return car;}
+    public int getMoped() {return moped;}
+
     public Boolean allowsMotorcycle(){
         if(motorcycle == 1) {
             return true;
