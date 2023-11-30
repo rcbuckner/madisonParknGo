@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        csvParser.parse(this.getApplicationContext());
+        //csvParser.parse(this.getApplicationContext());
         Log.i("Test DB Creation", "DB at first lotID: " +
                 DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots().get(0).getName());
     }
