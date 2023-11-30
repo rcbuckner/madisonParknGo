@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class csvParser {
+
     public static void parse(Context context) {
         Scanner scnr;
+        final int NUM_COLUMNS = 14;
 
         try
         {
@@ -36,7 +38,7 @@ public abstract class csvParser {
 
 
         while (scnr.hasNext()) {
-            items = new String[12];
+            items = new String[NUM_COLUMNS];
             line = scnr.nextLine();
             charArray = line.toCharArray();
             index = 0;
@@ -68,7 +70,7 @@ public abstract class csvParser {
 
             lot = new ParkingLot(Integer.parseInt(items[0]), items[1], items[2], Integer.parseInt(items[3]),
                     Integer.parseInt(items[4]), Integer.parseInt(items[5]), items[6], items[7], items[8], items[9],
-                    items[10], items[11]);
+                    items[10], items[11], Float.parseFloat(items[12]), Float.parseFloat(items[13]));
 
             DBHelper.getDBInstance(context).userDao().insertLot(lot);
 
