@@ -11,6 +11,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.Button;
@@ -58,6 +59,54 @@ public class Map extends FragmentActivity {
         Button buttonBack = findViewById(R.id.buttonBack);
         Button buttonListView = findViewById(R.id.buttonListview);
 
+        Button buttonMotorcycle = findViewById(R.id.buttonMotorcycle);
+        buttonMotorcycle.setVisibility(View.GONE);
+
+        Button buttonStreet = findViewById(R.id.buttonStreet);
+        buttonStreet.setVisibility(View.GONE);
+
+        Button buttonCostHigh = findViewById(R.id.buttonCostHigh);
+        buttonCostHigh.setVisibility(View.GONE);
+
+        Button buttonDestinationHigh = findViewById(R.id.buttonDestinationHigh);
+        buttonDestinationHigh.setVisibility(View.GONE);
+
+        Button buttonTypeOfLotTop = findViewById(R.id.buttonTypeOfLotTop);
+        buttonTypeOfLotTop.setVisibility(View.GONE);
+
+        Button buttonCostTop = findViewById(R.id.buttonCostTop);
+        buttonCostTop.setVisibility(View.GONE);
+
+        Button buttonProximityTop = findViewById(R.id.buttonProximityTop);
+        buttonProximityTop.setVisibility(View.GONE);
+
+        Button buttonMoped = findViewById(R.id.buttonMoped);
+        buttonMoped.setVisibility(View.GONE);
+
+        Button buttonGarage = findViewById(R.id.buttonGarage);
+        buttonGarage.setVisibility(View.GONE);
+
+        Button buttonLowCost = findViewById(R.id.buttonLowCost);
+        buttonLowCost.setVisibility(View.GONE);
+
+        Button buttonDestinationSmall = findViewById(R.id.buttonDestinationSmall);
+        buttonDestinationSmall.setVisibility(View.GONE);
+
+        Button buttonCar = findViewById(R.id.buttonCar);
+        buttonCar.setVisibility(View.GONE);
+
+        Button buttonSurfaceLot = findViewById(R.id.buttonSurfaceLot);
+        buttonSurfaceLot.setVisibility(View.GONE);
+
+        Button buttonCostMedium = findViewById(R.id.buttonCostMedium);
+        buttonCostMedium.setVisibility(View.GONE);
+
+        Button buttonDestinationMedium = findViewById(R.id.buttonDestinationMedium);
+        buttonDestinationMedium.setVisibility(View.GONE);
+
+
+
+
         // Set onClickListeners
         buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick(this.getApplicationContext()));
         buttonLotType.setOnClickListener(v -> handleLotTypeClick(this.getApplicationContext()));
@@ -102,87 +151,145 @@ public class Map extends FragmentActivity {
 
     }
     private void handleVehicleTypeClick(Context context) {
-        // Get references to the other buttons
+        // Get references to the other button
         Button buttonLotType = findViewById(R.id.buttonLotType);
+        buttonLotType.setVisibility(View.GONE);
         Button buttonCost = findViewById(R.id.buttonCost);
+        buttonCost.setVisibility(View.GONE);
         Button buttonProximity = findViewById(R.id.buttonProximity);
-        Button buttonBack = findViewById(R.id.buttonBack);
+        buttonProximity.setVisibility(View.GONE);
 
-        // Change the texts of the buttons
-        buttonLotType.setText("Moped");
-        buttonCost.setText("Car");
-        buttonProximity.setText("Motorcycle");
+        Button buttonMoped = findViewById(R.id.buttonMoped);
+        buttonMoped.setVisibility(View.VISIBLE);
+        Button buttonCar = findViewById(R.id.buttonCar);
+        buttonCar.setVisibility(View.VISIBLE);
+        Button buttonMotorcycle = findViewById(R.id.buttonMotorcycle);
+        buttonMotorcycle.setVisibility(View.VISIBLE);
 
-        // Set new onClickListeners for the buttons to define their new actions
-        //NOTDEFINED YET
-        buttonLotType.setOnClickListener(v -> {
-            updateMap(DBHelper.getDBInstance(context).userDao().getMopedLots(), context);
-        });
-//        buttonCost.setOnClickListener(v -> handleCarClick());
-//        buttonProximity.setOnClickListener(v -> handleMotorcycleClick());
-        // Keep the back button's functionality as is, or modify if needed
+
     }
 
     private void handleLotTypeClick(Context context) {
 
-        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
-        Button buttonLotType = findViewById(R.id.buttonLotType);
-        Button buttonCost = findViewById(R.id.buttonCost);
-        Button buttonProximity = findViewById(R.id.buttonProximity);
 
-        // Change the texts of the buttons
-        buttonVehicleType.setText("Lot Type");
-        buttonLotType.setText("Garage");
-        buttonCost.setText("Surface Lot");
-        buttonProximity.setText("Street");
+        Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        buttonVehicleType.setVisibility(View.GONE);
+        Button buttonLotType = findViewById(R.id.buttonLotType);
+        buttonLotType.setVisibility(View.GONE);
+        Button buttonCost = findViewById(R.id.buttonCost);
+        buttonCost.setVisibility(View.GONE);
+        Button buttonProximity = findViewById(R.id.buttonProximity);
+        buttonProximity.setVisibility(View.GONE);
+
+        Button buttonTypeOfLotTop = findViewById(R.id.buttonTypeOfLotTop);
+        buttonTypeOfLotTop.setVisibility(View.VISIBLE);
+        Button buttonGarage = findViewById(R.id.buttonGarage);
+        buttonGarage.setVisibility(View.VISIBLE);
+        Button buttonSurfaceLot = findViewById(R.id.buttonSurfaceLot);
+        buttonSurfaceLot.setVisibility(View.VISIBLE);
+        Button buttonStreet = findViewById(R.id.buttonStreet);
+        buttonStreet.setVisibility(View.VISIBLE);
 
 
     }
 
     private void handleCostClick(Context context) {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        buttonVehicleType.setVisibility(View.GONE);
         Button buttonLotType = findViewById(R.id.buttonLotType);
+        buttonLotType.setVisibility(View.GONE);
         Button buttonCost = findViewById(R.id.buttonCost);
+        buttonCost.setVisibility(View.GONE);
         Button buttonProximity = findViewById(R.id.buttonProximity);
+        buttonProximity.setVisibility(View.GONE);
 
-        // Change the texts of the buttons
-        buttonVehicleType.setText("Cost");
-        buttonLotType.setText("$0-$1");
-        buttonCost.setText("$1-$2");
-        buttonProximity.setText("More Than $2");
+        Button buttonCostTop = findViewById(R.id.buttonCostTop);
+        buttonCostTop.setVisibility(View.VISIBLE);
+        Button buttonLowCost = findViewById(R.id.buttonLowCost);
+        buttonLowCost.setVisibility(View.VISIBLE);
+        Button buttonCostMedium = findViewById(R.id.buttonCostMedium);
+        buttonCostMedium.setVisibility(View.VISIBLE);
+        Button buttonCostHigh = findViewById(R.id.buttonCostHigh);
+        buttonCostHigh.setVisibility(View.VISIBLE);
     }
 
     private void handleProximityClick(Context context) {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        buttonVehicleType.setVisibility(View.GONE);
         Button buttonLotType = findViewById(R.id.buttonLotType);
+        buttonLotType.setVisibility(View.GONE);
         Button buttonCost = findViewById(R.id.buttonCost);
+        buttonCost.setVisibility(View.GONE);
         Button buttonProximity = findViewById(R.id.buttonProximity);
+        buttonProximity.setVisibility(View.GONE);
 
-        // Change the texts of the buttons
-        buttonVehicleType.setText("Proximity to Destination");
-        buttonLotType.setText("0 - 0.5 Miles");
-        buttonCost.setText("0.5 - 1 Miles");
-        buttonProximity.setText("More Than 1 Miles");
+        Button buttonProximityTop = findViewById(R.id.buttonProximityTop);
+        buttonProximityTop.setVisibility(View.VISIBLE);
+        Button buttonDestinationSmall = findViewById(R.id.buttonDestinationSmall);
+        buttonDestinationSmall.setVisibility(View.VISIBLE);
+        Button buttonDestinationMedium = findViewById(R.id.buttonDestinationMedium);
+        buttonDestinationMedium.setVisibility(View.VISIBLE);
+        Button buttonDestinationHigh = findViewById(R.id.buttonDestinationHigh);
+        buttonDestinationHigh.setVisibility(View.VISIBLE);
+
     }
 
     private void handleBackClick(Context context) {
 
-        // Reset the onClickListeners for the buttons
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
+        buttonVehicleType.setVisibility(View.VISIBLE);
         Button buttonLotType = findViewById(R.id.buttonLotType);
+        buttonLotType.setVisibility(View.VISIBLE);
         Button buttonCost = findViewById(R.id.buttonCost);
+        buttonCost.setVisibility(View.VISIBLE);
         Button buttonProximity = findViewById(R.id.buttonProximity);
+        buttonProximity.setVisibility(View.VISIBLE);
 
-        buttonVehicleType.setText("Vehicle Type");
-        buttonLotType.setText("Type of Lot");
-        buttonCost.setText("Cost");
-        buttonProximity.setText("Proximity to Destination");
+        Button buttonMotorcycle = findViewById(R.id.buttonMotorcycle);
+        buttonMotorcycle.setVisibility(View.GONE);
 
+        Button buttonStreet = findViewById(R.id.buttonStreet);
+        buttonStreet.setVisibility(View.GONE);
 
-        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick(context));
-        buttonLotType.setOnClickListener(v -> handleLotTypeClick(context));
-        buttonCost.setOnClickListener(v -> handleCostClick(context));
-        buttonProximity.setOnClickListener(v -> handleProximityClick(context));
+        Button buttonCostHigh = findViewById(R.id.buttonCostHigh);
+        buttonCostHigh.setVisibility(View.GONE);
+
+        Button buttonDestinationHigh = findViewById(R.id.buttonDestinationHigh);
+        buttonDestinationHigh.setVisibility(View.GONE);
+
+        Button buttonTypeOfLotTop = findViewById(R.id.buttonTypeOfLotTop);
+        buttonTypeOfLotTop.setVisibility(View.GONE);
+
+        Button buttonCostTop = findViewById(R.id.buttonCostTop);
+        buttonCostTop.setVisibility(View.GONE);
+
+        Button buttonProximityTop = findViewById(R.id.buttonProximityTop);
+        buttonProximityTop.setVisibility(View.GONE);
+
+        Button buttonMoped = findViewById(R.id.buttonMoped);
+        buttonMoped.setVisibility(View.GONE);
+
+        Button buttonGarage = findViewById(R.id.buttonGarage);
+        buttonGarage.setVisibility(View.GONE);
+
+        Button buttonLowCost = findViewById(R.id.buttonLowCost);
+        buttonLowCost.setVisibility(View.GONE);
+
+        Button buttonDestinationSmall = findViewById(R.id.buttonDestinationSmall);
+        buttonDestinationSmall.setVisibility(View.GONE);
+
+        Button buttonCar = findViewById(R.id.buttonCar);
+        buttonCar.setVisibility(View.GONE);
+
+        Button buttonSurfaceLot = findViewById(R.id.buttonSurfaceLot);
+        buttonSurfaceLot.setVisibility(View.GONE);
+
+        Button buttonCostMedium = findViewById(R.id.buttonCostMedium);
+        buttonCostMedium.setVisibility(View.GONE);
+
+        Button buttonDestinationMedium = findViewById(R.id.buttonDestinationMedium);
+        buttonDestinationMedium.setVisibility(View.GONE);
+
     }
 
     private void handleListViewClick(Context context) {
