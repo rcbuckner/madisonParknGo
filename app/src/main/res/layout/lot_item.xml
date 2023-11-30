@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Add views such as TextViews, ImageViews etc., that make up a single item -->
+    <TextView
+        android:id="@+id/textViewLotName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lot Name"
+        android:textSize="18sp" />
+
+    <!-- More views for the lot item -->
+
+</LinearLayout>

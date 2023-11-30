@@ -1,9 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Base.Theme.MadisonParknGo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/bannerColor</item>
+        <item name="colorPrimaryDark">@color/bannerColor</item>
+        <item name="colorAccent">@color/buttonTextColor</item>
+        <item name="android:buttonStyle">@style/CustomButtonStyle</item>
+    </style>
+    <style name="Theme.MadisonParknGo" parent="Theme.AppCompat.Light.NoActionBar" >
+    <item name="colorPrimary">@color/bannerColor</item>
+        <item name="colorPrimaryDark">@color/bannerColor</item>
+        <item name="colorAccent">@color/buttonTextColor</item>
+        <item name="android:buttonStyle">@style/CustomButtonStyle</item>
+    </style>
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/buttonTextColor</item>
+        <item name="android:background">@drawable/button_background</item>
     </style>
 
-    <style name="Theme.MadisonParknGo" parent="Base.Theme.MadisonParknGo" />
+
+
 </resources>
