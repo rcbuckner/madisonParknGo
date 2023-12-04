@@ -15,7 +15,6 @@
 
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    //All first layer buttons below
     <Button
         android:id="@+id/buttonVehicleType"
         android:layout_width="match_parent"
@@ -23,7 +22,8 @@
         android:text="Vehicle Type"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="10dp" />
+        tools:layout_editor_absoluteY="10dp"
+        />
 
     <Button
         android:id="@+id/buttonTypeOfLotTop"

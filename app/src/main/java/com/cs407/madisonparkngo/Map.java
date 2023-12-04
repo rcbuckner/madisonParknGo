@@ -43,14 +43,18 @@ public class Map extends FragmentActivity {
 
     List<ParkingLot> locationList;
 
+    DBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
 
-        locationList = DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots();
+        dbHelper = DBHelper.getDBInstance(this.getApplicationContext());
 
-        updateMap(null, getApplicationContext());
+        locationList = dbHelper.userDao().getAllLots();
+
+        updateMap(null);
 
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         Button buttonLotType = findViewById(R.id.buttonLotType);
@@ -108,21 +112,20 @@ public class Map extends FragmentActivity {
 
 
         // Set onClickListeners
-        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick(this.getApplicationContext()));
-        buttonLotType.setOnClickListener(v -> handleLotTypeClick(this.getApplicationContext()));
-        buttonCost.setOnClickListener(v -> handleCostClick(this.getApplicationContext()));
-        buttonProximity.setOnClickListener(v -> handleProximityClick(this.getApplicationContext()));
-        buttonBack.setOnClickListener(v -> handleBackClick(this.getApplicationContext()));
-        buttonListView.setOnClickListener(v -> handleListViewClick(this.getApplicationContext()));
-
+        buttonVehicleType.setOnClickListener(v -> handleVehicleTypeClick());
+        buttonLotType.setOnClickListener(v -> handleLotTypeClick());
+        buttonCost.setOnClickListener(v -> handleCostClick());
+        buttonProximity.setOnClickListener(v -> handleProximityClick());
+        buttonBack.setOnClickListener(v -> handleBackClick());
+        buttonListView.setOnClickListener(v -> handleListViewClick());
 
 
 
     }
 
-    private void updateMap(List<ParkingLot> newLot, Context context) {
+    private void updateMap(List<ParkingLot> newLot) {
         if (newLot != null) {
-            ListHelper.mergeLists(locationList, newLot);
+            locationList = ListHelper.mergeLists(locationList, newLot);
         }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
@@ -150,7 +153,7 @@ public class Map extends FragmentActivity {
 
 
     }
-    private void handleVehicleTypeClick(Context context) {
+    private void handleVehicleTypeClick() {
         // Get references to the other button
         Button buttonLotType = findViewById(R.id.buttonLotType);
         buttonLotType.setVisibility(View.GONE);
@@ -166,10 +169,26 @@ public class Map extends FragmentActivity {
         Button buttonMotorcycle = findViewById(R.id.buttonMotorcycle);
         buttonMotorcycle.setVisibility(View.VISIBLE);
 
-
+        buttonMoped.setOnClickListener(v -> handleMopedClick());
+        buttonCar.setOnClickListener(v -> handleCarClick());
+        buttonMotorcycle.setOnClickListener(v -> handleMotorcycleClick());
     }
 
-    private void handleLotTypeClick(Context context) {
+    private void handleMopedClick() {
+        updateMap(dbHelper.userDao().getMopedLots());
+        handleBackClick();
+    }
+
+    private void handleCarClick() {
+        updateMap(dbHelper.userDao().getCarLots());
+        handleBackClick();
+    }
+
+    private void handleMotorcycleClick() {
+        updateMap(dbHelper.userDao().getMotorcycleLots());
+        handleBackClick();
+    }
+    private void handleLotTypeClick() {
 
 
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
@@ -190,10 +209,27 @@ public class Map extends FragmentActivity {
         Button buttonStreet = findViewById(R.id.buttonStreet);
         buttonStreet.setVisibility(View.VISIBLE);
 
-
+        buttonGarage.setOnClickListener(v -> handleGarageClick());
+        buttonStreet.setOnClickListener(v -> handleStreetClick());
+        buttonSurfaceLot.setOnClickListener(v -> handleSurfaceClick());
     }
 
-    private void handleCostClick(Context context) {
+    private void handleGarageClick() {
+        updateMap(dbHelper.userDao().getTypeOfLot("Garage"));
+        handleBackClick();
+    }
+
+    private void handleStreetClick() {
+        updateMap(dbHelper.userDao().getTypeOfLot("Street"));
+        handleBackClick();
+    }
+
+    private void handleSurfaceClick() {
+        updateMap(dbHelper.userDao().getTypeOfLot("Surface Lot"));
+        handleBackClick();
+    }
+
+    private void handleCostClick() {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         buttonVehicleType.setVisibility(View.GONE);
         Button buttonLotType = findViewById(R.id.buttonLotType);
@@ -211,9 +247,28 @@ public class Map extends FragmentActivity {
         buttonCostMedium.setVisibility(View.VISIBLE);
         Button buttonCostHigh = findViewById(R.id.buttonCostHigh);
         buttonCostHigh.setVisibility(View.VISIBLE);
+
+        buttonLowCost.setOnClickListener(v -> handleLowCostClick());
+        buttonCostMedium.setOnClickListener(v -> handleMediumCostClick());
+        buttonCostHigh.setOnClickListener(v -> handleHighCostClick());
     }
 
-    private void handleProximityClick(Context context) {
+    private void handleLowCostClick() {
+        updateMap(dbHelper.userDao().getPricedLots(0,1));
+        handleBackClick();
+    }
+
+    private void handleMediumCostClick() {
+        updateMap(dbHelper.userDao().getPricedLots(1,2));
+        handleBackClick();
+    }
+
+    private void handleHighCostClick() {
+        updateMap(dbHelper.userDao().getPricedLots(2,100));
+        handleBackClick();
+    }
+
+    private void handleProximityClick() {
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         buttonVehicleType.setVisibility(View.GONE);
         Button buttonLotType = findViewById(R.id.buttonLotType);
@@ -232,9 +287,22 @@ public class Map extends FragmentActivity {
         Button buttonDestinationHigh = findViewById(R.id.buttonDestinationHigh);
         buttonDestinationHigh.setVisibility(View.VISIBLE);
 
+        buttonDestinationSmall.setOnClickListener(v -> handleSmallDesClick());
+        buttonDestinationMedium.setOnClickListener(v -> handleMediumDesClick());
+        buttonDestinationHigh.setOnClickListener(v -> handleHighDesClick());
     }
 
-    private void handleBackClick(Context context) {
+    private void handleSmallDesClick() {
+        handleBackClick();
+    }
+    private void handleMediumDesClick() {
+        handleBackClick();
+    }
+    private void handleHighDesClick(){
+        handleBackClick();
+    }
+
+    private void handleBackClick() {
 
         Button buttonVehicleType = findViewById(R.id.buttonVehicleType);
         buttonVehicleType.setVisibility(View.VISIBLE);
@@ -292,7 +360,7 @@ public class Map extends FragmentActivity {
 
     }
 
-    private void handleListViewClick(Context context) {
+    private void handleListViewClick() {
         Button buttonListView = findViewById(R.id.buttonListview);
         buttonListView.setOnClickListener(new View.OnClickListener() {
             @Override
