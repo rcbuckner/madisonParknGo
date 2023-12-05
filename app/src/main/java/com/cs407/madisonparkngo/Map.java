@@ -149,7 +149,7 @@ public class Map extends FragmentActivity {
             }
             moveCamera();
 
-            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+
             displayMyLocation();
 
             googleMap.setOnMarkerClickListener(marker -> {
