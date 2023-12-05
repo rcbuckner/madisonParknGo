@@ -125,7 +125,9 @@ public class Map extends FragmentActivity {
 
     private void updateMap(List<ParkingLot> newLot) {
         if (newLot != null) {
+            Log.i("Pre Merge Size", "List Size: " + locationList.size());
             locationList = ListHelper.mergeLists(locationList, newLot);
+            Log.i("After-Merge Size", "List Size: " + locationList.size());
         }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
