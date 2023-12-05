@@ -399,16 +399,8 @@ public class Map extends FragmentActivity {
         intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
         intent.putExtra("lotPermit", lot.getPermit());
         intent.putExtra("lotCost", lot.getCost());
-        intent.putExtra("lotOpen", lot.getTimeOpen());
-        intent.putExtra("lotClose", lot.getTimeClose());
         intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
 
-
-        /*
-        intent.putExtra("markerTitle", marker.getTitle());
-        intent.putExtra("markerLat", marker.getPosition().latitude);
-        intent.putExtra("markerLng", marker.getPosition().longitude);
-        */
         // Add any other marker-specific data you need to pass
         startActivity(intent);
     }

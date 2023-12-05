@@ -14,10 +14,19 @@ public class lotInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lot_information);
 
-        // Get data from intent
-        String markerTitle = getIntent().getStringExtra("markerTitle");
-        double markerLat = getIntent().getDoubleExtra("markerLat", 0);
-        double markerLng = getIntent().getDoubleExtra("markerLng", 0);
+
+        // Retrieve data from the intent
+        String lotName = getIntent().getStringExtra("lotName");
+        String lotAddress = getIntent().getStringExtra("lotAddress");
+        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
+        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
+        boolean lotMotorcycle = getIntent().getBooleanExtra("lotMotorcycle", false);
+        boolean lotCar = getIntent().getBooleanExtra("lotCar", false);
+        boolean lotMoped = getIntent().getBooleanExtra("lotMoped", false);
+        String lotTypeOfLot = getIntent().getStringExtra("lotTypeOfLot");
+        String lotPermit = getIntent().getStringExtra("lotPermit");
+        double lotCost = getIntent().getDoubleExtra("lotCost", 0);
+        String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
 
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish()); // Finish the current activity
