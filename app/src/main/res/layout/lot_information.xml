@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#000000"
         android:textSize="25sp" />
 
     <Button
@@ -37,6 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Info:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/backButton" />
 
     <TextView
@@ -44,6 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cost:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/textInfo"/>
 
     <TextView
@@ -51,6 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Vehicles:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/textCost" />
 
     <TextView
@@ -58,6 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Address:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/textVehicles"/>
 
     <TextView
@@ -65,6 +74,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lot Type:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/textAddress" />
 
     <TextView
@@ -72,6 +83,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Permit:"
+        android:textSize="18sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/textLotType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
