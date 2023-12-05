@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,17 +17,44 @@ public class lotInformation extends AppCompatActivity {
 
 
         // Retrieve data from the intent
-        String lotName = getIntent().getStringExtra("lotName");
+//        String lotName = getIntent().getStringExtra("lotName");
+//        String lotAddress = getIntent().getStringExtra("lotAddress");
+//        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
+//        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
+//        boolean lotMotorcycle = getIntent().getBooleanExtra("lotMotorcycle", false);
+//        boolean lotCar = getIntent().getBooleanExtra("lotCar", false);
+//        boolean lotMoped = getIntent().getBooleanExtra("lotMoped", false);
+//        String lotTypeOfLot = getIntent().getStringExtra("lotTypeOfLot");
+//        String lotPermit = getIntent().getStringExtra("lotPermit");
+//        float lotCost = getIntent().getFloatExtra("lotCost", 0);
+//        String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
+
+        String lotCost = getIntent().getStringExtra("lotCost");
+        String lotVehicles = buildVehicleString(
+                getIntent().getBooleanExtra("lotMotorcycle", false),
+                getIntent().getBooleanExtra("lotCar", false),
+                getIntent().getBooleanExtra("lotMoped", false));
         String lotAddress = getIntent().getStringExtra("lotAddress");
-        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
-        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
-        boolean lotMotorcycle = getIntent().getBooleanExtra("lotMotorcycle", false);
-        boolean lotCar = getIntent().getBooleanExtra("lotCar", false);
-        boolean lotMoped = getIntent().getBooleanExtra("lotMoped", false);
         String lotTypeOfLot = getIntent().getStringExtra("lotTypeOfLot");
         String lotPermit = getIntent().getStringExtra("lotPermit");
-        double lotCost = getIntent().getDoubleExtra("lotCost", 0);
-        String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
+        String lotName = getIntent().getStringExtra("lotName");
+
+        // Find the TextViews by their IDs and update their text
+        TextView textCost = findViewById(R.id.textCost);
+        TextView textVehicles = findViewById(R.id.textVehicles);
+        TextView textAddress = findViewById(R.id.textAddress);
+        TextView textLotType = findViewById(R.id.textLotType);
+        TextView textPermit = findViewById(R.id.textPermit);
+        TextView textTitle = findViewById(R.id.lotTitle);
+
+        textCost.setText("Cost: " + (lotCost != null ? lotCost : "Not available"));
+        textVehicles.setText("Vehicles: " + lotVehicles);
+        textAddress.setText("Address: " + (lotAddress != null ? lotAddress : "Not available"));
+        textLotType.setText("Lot Type: " + (lotTypeOfLot != null ? lotTypeOfLot : "Not available"));
+        textPermit.setText("Permit: " + (lotPermit != null ? lotPermit : "Not available"));
+        textTitle.setText(""+lotName);
+
+
 
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish()); // Finish the current activity
@@ -42,4 +70,19 @@ public class lotInformation extends AppCompatActivity {
             }
         });
     }
+
+    private String buildVehicleString(boolean motorcycle, boolean car, boolean moped) {
+        StringBuilder vehicles = new StringBuilder();
+        if (motorcycle) {
+            vehicles.append("Motorcycle ");
+        }
+        if (car) {
+            vehicles.append("Car ");
+        }
+        if (moped) {
+            vehicles.append("Moped");
+        }
+        return vehicles.length() > 0 ? vehicles.toString() : "Not available";
+    }
+
 }
