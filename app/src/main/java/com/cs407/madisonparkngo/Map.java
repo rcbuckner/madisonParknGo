@@ -265,17 +265,17 @@ public class Map extends FragmentActivity {
     }
 
     private void handleLowCostClick() {
-        updateMap(dbHelper.userDao().getPricedLots(0,1));
+        updateMap(dbHelper.userDao().getPricedLots(1,0));
         handleBackClick();
     }
 
     private void handleMediumCostClick() {
-        updateMap(dbHelper.userDao().getPricedLots(1,2));
+        updateMap(dbHelper.userDao().getPricedLots(2,1));
         handleBackClick();
     }
 
     private void handleHighCostClick() {
-        updateMap(dbHelper.userDao().getPricedLots(2,100));
+        updateMap(dbHelper.userDao().getPricedLots(100,2));
         handleBackClick();
     }
 
