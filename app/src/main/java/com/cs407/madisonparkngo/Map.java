@@ -502,7 +502,7 @@ public class Map extends FragmentActivity {
                         mMap = googleMap;
 
                         BitmapDescriptor markerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN); // Replace HUE_BLUE with your desired color
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude())).title("Last Known Location"));
+                        googleMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude())).title("Last Known Location").icon(markerIcon)););
                         displayMyLocation();
                     });
                 }
