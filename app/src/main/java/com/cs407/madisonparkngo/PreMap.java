@@ -1,5 +1,6 @@
 package com.cs407.madisonparkngo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,15 +41,33 @@ public class PreMap extends AppCompatActivity {
         });
 
 
-
+        DBHelper dbHelper = DBHelper.getDBInstance(this.getApplicationContext());
+        Context context = this.getApplicationContext();
         Button button2 = findViewById(R.id.continueButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String destination = destinationEditText.getText().toString();
                 // Start the SecondActivity
-                Intent intent = new Intent(PreMap.this, Map.class);
-                startActivity(intent);
+                ParkingLot lot = dbHelper.userDao().getSpecificLot(destination);
+                if (lot != null) {
+                    Intent intent = new Intent(PreMap.this, lotInformation.class);
+                    intent.putExtra("lotName", lot.getName());
+                    intent.putExtra("lotAddress", lot.getAddress());
+                    intent.putExtra("lotLat", lot.getLatitude());
+                    intent.putExtra("lotLong", lot.getLongitude());
+                    intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
+                    intent.putExtra("lotCar", lot.allowsCar());
+                    intent.putExtra("lotMoped", lot.allowsMoped());
+                    intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
+                    intent.putExtra("lotPermit", lot.getPermit());
+                    intent.putExtra("lotCost", lot.getCost());
+                    intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(context, "Parking Lot Does Not Exist in Our Database", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
