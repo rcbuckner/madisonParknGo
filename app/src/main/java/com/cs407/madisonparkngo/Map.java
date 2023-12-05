@@ -147,7 +147,7 @@ public class Map extends FragmentActivity {
             for (ParkingLot location : locationList) {
                 googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
             }
-
+            moveCamera();
 
             googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
             displayMyLocation();
@@ -436,6 +436,14 @@ public class Map extends FragmentActivity {
                 displayMyLocation();
             }
         }
+    }
+
+    private void moveCamera(){
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(mDestinationLatLng)
+                .zoom(13.5f)
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
 
