@@ -304,12 +304,86 @@ public class Map extends FragmentActivity {
     }
 
     private void handleSmallDesClick() {
+        List<ParkingLot> newLots = dbHelper.userDao().getAllLots();
+        int permission= ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission== PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
+        }
+        else {
+            mfusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, task ->{
+                Location mLastKnownLocation = task.getResult();
+                if (task.isSuccessful() && mLastKnownLocation != null){
+                    for (int i = 0; i < newLots.size(); ++i) {
+                        if (getDistance((float)mLastKnownLocation.getLatitude(), (float) mLastKnownLocation.getLongitude(), newLots.get(i).getLatitude(), newLots.get(i).getLongitude()) > 1) {
+                            newLots.remove(i);
+                        }
+
+                    }
+                }
+
+
+
+            });
+
+        }
+        updateMap(newLots);
         handleBackClick();
     }
     private void handleMediumDesClick() {
+        List<ParkingLot> newLots = dbHelper.userDao().getAllLots();
+        int permission= ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission== PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
+        }
+        else {
+            mfusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, task ->{
+                Location mLastKnownLocation = task.getResult();
+                if (task.isSuccessful() && mLastKnownLocation != null){
+                    for (int i = 0; i < newLots.size(); ++i) {
+                        float distance = getDistance((float)mLastKnownLocation.getLatitude(), (float) mLastKnownLocation.getLongitude(), newLots.get(i).getLatitude(), newLots.get(i).getLongitude());
+                        if (distance < 1 || distance > 2) {
+                            newLots.remove(i);
+                        }
+
+                    }
+                }
+
+
+
+            });
+
+        }
+        updateMap(newLots);
         handleBackClick();
     }
     private void handleHighDesClick(){
+        List<ParkingLot> newLots = dbHelper.userDao().getAllLots();
+        int permission= ActivityCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission== PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
+        }
+        else {
+            mfusedLocationProviderClient.getLastLocation().addOnCompleteListener(this, task ->{
+                Location mLastKnownLocation = task.getResult();
+                if (task.isSuccessful() && mLastKnownLocation != null){
+                    for (int i = 0; i < newLots.size(); ++i) {
+                        float distance = getDistance((float)mLastKnownLocation.getLatitude(), (float) mLastKnownLocation.getLongitude(), newLots.get(i).getLatitude(), newLots.get(i).getLongitude());
+                        if (distance < 2) {
+                            newLots.remove(i);
+                        }
+
+                    }
+                }
+
+
+
+            });
+
+        }
+        updateMap(newLots);
         handleBackClick();
     }
 
