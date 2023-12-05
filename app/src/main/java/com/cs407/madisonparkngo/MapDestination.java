@@ -40,14 +40,15 @@ public class MapDestination extends FragmentActivity {
         // Show a Toast message
 
         // Get destination from intent
-//        double destLat = getIntent().getDoubleExtra("DEST_LAT", 0);
-//        double destLng = getIntent().getDoubleExtra("DEST_LNG", 0);
-//        mDestinationLatLng = new LatLng(destLat, destLng);
+        float destLat = getIntent().getFloatExtra("lotLat", 0);
+        float destLng = getIntent().getFloatExtra("lotLong", 0);
+        String destName = getIntent().getStringExtra("lotName");
+        mDestinationLatLng = new LatLng(destLat, destLng);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
-            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title(getIntent().getStringExtra("lotName")));
+            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title(destName));
             moveCamera();
             displayMyLocation();
 

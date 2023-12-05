@@ -19,8 +19,8 @@ public class lotInformation extends AppCompatActivity {
         // Retrieve data from the intent
 //        String lotName = getIntent().getStringExtra("lotName");
 //        String lotAddress = getIntent().getStringExtra("lotAddress");
-        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
-        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
+        float lotLat = getIntent().getFloatExtra("lotLat", (float)39.0738);
+        float lotLong = getIntent().getFloatExtra("lotLong", (float)125.8198);
 //        boolean lotMotorcycle = getIntent().getBooleanExtra("lotMotorcycle", false);
 //        boolean lotCar = getIntent().getBooleanExtra("lotCar", false);
 //        boolean lotMoped = getIntent().getBooleanExtra("lotMoped", false);
