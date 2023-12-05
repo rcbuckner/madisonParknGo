@@ -21,8 +21,7 @@
         android:layout_height="45dp"
         android:text="Vehicle Type"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="10dp"
+
         />
 
     <Button
@@ -31,16 +30,14 @@
         android:layout_height="45dp"
         android:text="Type of Lot"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="10dp" />
+     />
     <Button
         android:id="@+id/buttonCostTop"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:text="Cost"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="10dp" />
+         />
 
     <Button
         android:id="@+id/buttonProximityTop"
@@ -48,8 +45,7 @@
         android:layout_height="45dp"
         android:text="Proximity to Current Location"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="10dp" />
+         />
 
     //All second layer buttons below
     <Button
@@ -58,8 +54,7 @@
         android:layout_height="45dp"
         android:text="Type of Lot"
         app:layout_constraintTop_toBottomOf="@id/buttonVehicleType"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="69dp" />
+         />
 
     <Button
         android:id="@+id/buttonMoped"
@@ -67,8 +62,7 @@
         android:layout_height="45dp"
         android:text="Moped"
         app:layout_constraintTop_toBottomOf="@id/buttonVehicleType"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="69dp" />
+        />
 
     <Button
         android:id="@+id/buttonGarage"
@@ -76,8 +70,7 @@
         android:layout_height="45dp"
         android:text="Garage"
         app:layout_constraintTop_toBottomOf="@id/buttonTypeOfLotTop"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="69dp" />
+         />
 
     <Button
         android:id="@+id/buttonLowCost"
@@ -85,8 +78,7 @@
         android:layout_height="45dp"
         android:text="$0-$1"
         app:layout_constraintTop_toBottomOf="@id/buttonCostTop"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="69dp" />
+         />
 
     <Button
         android:id="@+id/buttonDestinationSmall"
@@ -94,8 +86,7 @@
         android:layout_height="45dp"
         android:text="0 - 0.5 miles"
         app:layout_constraintTop_toBottomOf="@id/buttonProximityTop"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="69dp" />
+         />
 
     //Third layer buttons below
     <Button
@@ -104,8 +95,7 @@
         android:layout_height="45dp"
         android:text="Cost"
         app:layout_constraintTop_toBottomOf="@id/buttonLotType"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="115dp" />
+        />
 
     <Button
         android:id="@+id/buttonCar"
@@ -113,8 +103,7 @@
         android:layout_height="45dp"
         android:text="Car"
         app:layout_constraintTop_toBottomOf="@id/buttonMoped"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="115dp" />
+         />
 
     <Button
         android:id="@+id/buttonSurfaceLot"
@@ -122,8 +111,7 @@
         android:layout_height="45dp"
         android:text="Surface Lot"
         app:layout_constraintTop_toBottomOf="@id/buttonGarage"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="115dp" />
+        />
 
     <Button
         android:id="@+id/buttonCostMedium"
@@ -131,8 +119,7 @@
         android:layout_height="45dp"
         android:text="$1-$2"
         app:layout_constraintTop_toBottomOf="@id/buttonLowCost"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="115dp" />
+         />
 
     <Button
         android:id="@+id/buttonDestinationMedium"
@@ -140,8 +127,7 @@
         android:layout_height="45dp"
         android:text="0.5 - 1 mile"
         app:layout_constraintTop_toBottomOf="@id/buttonDestinationSmall"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="115dp" />
+         />
 
     //Fourth layer buttons below
     <Button
@@ -150,8 +136,7 @@
         android:layout_height="45dp"
         android:text="Proximity to Current Location"
         app:layout_constraintTop_toBottomOf="@id/buttonCost"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="160dp" />
+        />
 
     <Button
         android:id="@+id/buttonMotorcycle"
@@ -159,8 +144,7 @@
         android:layout_height="45dp"
         android:text="MotorCycle"
         app:layout_constraintTop_toBottomOf="@id/buttonCar"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="160dp" />
+         />
 
     <Button
         android:id="@+id/buttonStreet"
@@ -168,8 +152,7 @@
         android:layout_height="45dp"
         android:text="Street"
         app:layout_constraintTop_toBottomOf="@id/buttonSurfaceLot"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="160dp" />
+         />
 
     <Button
         android:id="@+id/buttonCostHigh"
@@ -177,8 +160,7 @@
         android:layout_height="45dp"
         android:text="More than $2"
         app:layout_constraintTop_toBottomOf="@id/buttonCostMedium"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="160dp" />
+         />
 
     <Button
         android:id="@+id/buttonDestinationHigh"
@@ -186,8 +168,7 @@
         android:layout_height="45dp"
         android:text="More than 1 miles"
         app:layout_constraintTop_toBottomOf="@id/buttonDestinationMedium"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="160dp" />
+        />
 
     <Button
         android:id="@+id/buttonBack"
@@ -195,8 +176,7 @@
         android:layout_height="45dp"
         android:text="Back"
         app:layout_constraintBottom_toTopOf="@id/fragment_map"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="205dp" />
+         />
 
 
     <Button
@@ -206,7 +186,7 @@
         android:layout_marginBottom="56dp"
         android:text="List View"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+         />
 
     <Button
         android:id="@+id/buttonResetFilters"
@@ -214,7 +194,6 @@
         android:layout_height="45dp"
         android:layout_marginBottom="11dp"
         android:text="Reset Filters"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
