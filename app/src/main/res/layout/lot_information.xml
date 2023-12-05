@@ -32,4 +32,46 @@
         android:text="Take me there"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Info:"
+        tools:layout_editor_absoluteY="80dp" />
+
+    <TextView
+        android:id="@+id/textCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cost:"
+        app:layout_constraintTop_toBottomOf="@id/textInfo"/>
+
+    <TextView
+        android:id="@+id/textVehicles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vehicles:"
+        app:layout_constraintTop_toBottomOf="@id/textCost" />
+
+    <TextView
+        android:id="@+id/textAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        app:layout_constraintTop_toBottomOf="@id/textVehicles"/>
+
+    <TextView
+        android:id="@+id/textLotType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lot Type:"
+        app:layout_constraintTop_toBottomOf="@id/textAddress" />
+
+    <TextView
+        android:id="@+id/textPermit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Permit:"
+        app:layout_constraintTop_toBottomOf="@id/textLotType" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
