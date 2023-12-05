@@ -10,17 +10,17 @@
         android:id="@+id/buttonMapview"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginBottom="56dp"
         android:text="Map View"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ListView
+        android:id="@+id/notesListView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="680dp"
+        android:layout_weight="1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonMapview" />
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
