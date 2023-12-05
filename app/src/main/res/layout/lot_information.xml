@@ -12,9 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:text="Parking 1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#000000"
         android:textSize="25sp" />
 
     <Button
@@ -31,5 +32,59 @@
         android:layout_height="wrap_content"
         android:text="Take me there"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Info:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/lotTitle" />
+
+    <TextView
+        android:id="@+id/textCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cost:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/textInfo"/>
+
+    <TextView
+        android:id="@+id/textVehicles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vehicles:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/textCost" />
+
+    <TextView
+        android:id="@+id/textAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/textVehicles"/>
+
+    <TextView
+        android:id="@+id/textLotType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lot Type:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/textAddress" />
+
+    <TextView
+        android:id="@+id/textPermit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Permit:"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/textLotType" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

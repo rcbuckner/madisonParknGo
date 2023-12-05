@@ -72,7 +72,7 @@ public abstract class csvParser {
             }
 
             lot = new ParkingLot(Integer.parseInt(items[0]), items[1], items[2], Integer.parseInt(items[3]),
-                    Integer.parseInt(items[4]), Integer.parseInt(items[5]), items[6], items[7], items[8], items[9],
+                    Integer.parseInt(items[4]), Integer.parseInt(items[5]), items[6], items[7], Float.parseFloat(items[8]), items[9],
                     items[10], items[11], Float.parseFloat(items[12]), Float.parseFloat(items[13]));
 
             DBHelper.getDBInstance(context).userDao().insertLot(lot);

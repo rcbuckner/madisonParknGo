@@ -20,6 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -36,17 +37,19 @@ public class MapDestination extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_destination);
 
-        // Show a Toast message
+
 
         // Get destination from intent
-//        double destLat = getIntent().getDoubleExtra("DEST_LAT", 0);
-//        double destLng = getIntent().getDoubleExtra("DEST_LNG", 0);
-//        mDestinationLatLng = new LatLng(destLat, destLng);
+        float destLat = getIntent().getFloatExtra("lotLat", 0);
+        float destLng = getIntent().getFloatExtra("lotLong", 0);
+        String destName = getIntent().getStringExtra("lotName");
+        mDestinationLatLng = new LatLng(destLat, destLng);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
-            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title(destName));
+            moveCamera();
             displayMyLocation();
 
             });
@@ -85,5 +88,12 @@ public class MapDestination extends FragmentActivity {
         return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
     }
 
+    private void moveCamera(){
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(mDestinationLatLng)
+                .zoom(11.5f)
+                .build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
 }
