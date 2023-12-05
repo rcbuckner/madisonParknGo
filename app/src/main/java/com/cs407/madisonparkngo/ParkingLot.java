@@ -16,14 +16,14 @@ public class ParkingLot {
     private int moped;
     private String typeOfLot;
     private String permit;
-    private String cost;
+    private float cost;
     private String timeOpen;
     private String timeClose;
     private String specialInfo;
 
 
     public ParkingLot(int lotID, String name, String address, int motorcycle, int car, int moped,
-                      String typeOfLot, String permit, String cost, String timeOpen, String timeClose,
+                      String typeOfLot, String permit, float cost, String timeOpen, String timeClose,
                       String specialInfo, float latitude, float longitude) {
         this.lotID = lotID;
         this.name = name;
@@ -76,7 +76,7 @@ public class ParkingLot {
 
     public String getTypeOfLot() {return  typeOfLot;}
     public String getPermit() {return permit;}
-    public String getCost() {return cost;}
+    public float getCost() {return cost;}
     public String getTimeOpen(){return timeOpen;}
     public String getTimeClose() {return timeClose;}
     public String getSpecialInfo() {return specialInfo;}
