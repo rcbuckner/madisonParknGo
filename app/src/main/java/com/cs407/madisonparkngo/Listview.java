@@ -16,7 +16,7 @@ public class Listview extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LotAdapter lotAdapter;
-    private List<Lot> lotList;
+    private List<ParkingLot> lotList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class Listview extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize your lotList with data
-        lotList = new ArrayList<>();
+        lotList = DBHelper.getDBInstance(this.getApplicationContext()).userDao().getAllLots();
         // Add lots to lotList
 
         lotAdapter = new LotAdapter(this, lotList);
