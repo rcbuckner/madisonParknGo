@@ -71,6 +71,7 @@ public class lotInformation extends AppCompatActivity {
                 Intent intent = new Intent(lotInformation.this, MapDestination.class);
                 intent.putExtra("lotLat", lotLat);
                 intent.putExtra("lotLong", lotLong);
+                intent.putExtra("lotName", lotName);
                 startActivity(intent);
             }
         });

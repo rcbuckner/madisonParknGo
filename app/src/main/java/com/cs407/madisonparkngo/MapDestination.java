@@ -47,7 +47,7 @@ public class MapDestination extends FragmentActivity {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
-            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title("Destination"));
+            googleMap.addMarker(new MarkerOptions().position(mDestinationLatLng).title(getIntent().getStringExtra("lotName")));
             moveCamera();
             displayMyLocation();
 
