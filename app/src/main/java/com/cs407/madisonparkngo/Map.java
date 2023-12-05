@@ -271,7 +271,7 @@ public class Map extends FragmentActivity {
     }
 
     private void handleMediumCostClick() {
-        updateMap(dbHelper.userDao().getPricedLots(2,1));
+        updateMap(dbHelper.userDao().getPricedLots((float)2.01,1));
         handleBackClick();
     }
 
