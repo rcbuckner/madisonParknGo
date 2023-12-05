@@ -119,7 +119,12 @@ public class Map extends FragmentActivity {
         buttonBack.setOnClickListener(v -> handleBackClick());
         buttonListView.setOnClickListener(v -> handleListViewClick());
 
-
+        Button buttonReset = findViewById(R.id.buttonResetFilters);
+        buttonReset.setOnClickListener(v -> {
+            locationList = dbHelper.userDao().getAllLots();
+            updateMap(null);
+            Log.i("Reset List Size", "List Size: " + locationList.size());
+        });
 
     }
 
