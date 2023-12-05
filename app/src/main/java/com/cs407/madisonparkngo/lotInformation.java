@@ -27,7 +27,7 @@ public class lotInformation extends AppCompatActivity {
 //        String lotTypeOfLot = getIntent().getStringExtra("lotTypeOfLot");
 //        String lotPermit = getIntent().getStringExtra("lotPermit");
 //        float lotCost = getIntent().getFloatExtra("lotCost", 0);
-//        String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
+
 
         String lotCost = getIntent().getStringExtra("lotCost");
         String lotVehicles = buildVehicleString(
@@ -38,6 +38,7 @@ public class lotInformation extends AppCompatActivity {
         String lotTypeOfLot = getIntent().getStringExtra("lotTypeOfLot");
         String lotPermit = getIntent().getStringExtra("lotPermit");
         String lotName = getIntent().getStringExtra("lotName");
+        String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
 
         // Find the TextViews by their IDs and update their text
         TextView textCost = findViewById(R.id.textCost);
@@ -46,6 +47,7 @@ public class lotInformation extends AppCompatActivity {
         TextView textLotType = findViewById(R.id.textLotType);
         TextView textPermit = findViewById(R.id.textPermit);
         TextView textTitle = findViewById(R.id.lotTitle);
+        TextView textInfo = findViewById(R.id.textInfo);
 
         textCost.setText("Cost: " + (lotCost != null ? lotCost : "Not available"));
         textVehicles.setText("Vehicles: " + lotVehicles);
@@ -53,6 +55,7 @@ public class lotInformation extends AppCompatActivity {
         textLotType.setText("Lot Type: " + (lotTypeOfLot != null ? lotTypeOfLot : "Not available"));
         textPermit.setText("Permit: " + (lotPermit != null ? lotPermit : "Not available"));
         textTitle.setText(""+lotName);
+        textInfo.setText("Info: "+ (lotSpecialInfo != null ? lotSpecialInfo : "Not available"));
 
 
 
