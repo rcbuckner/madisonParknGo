@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:text="Parking 1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="#000000"
@@ -40,7 +40,7 @@
         android:text="Info:"
         android:textSize="18sp"
         android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@id/backButton" />
+        app:layout_constraintTop_toBottomOf="@id/lotTitle" />
 
     <TextView
         android:id="@+id/textCost"
