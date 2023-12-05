@@ -19,8 +19,8 @@ public class lotInformation extends AppCompatActivity {
         // Retrieve data from the intent
 //        String lotName = getIntent().getStringExtra("lotName");
 //        String lotAddress = getIntent().getStringExtra("lotAddress");
-//        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
-//        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
+        double lotLat = getIntent().getDoubleExtra("lotLat", 0);
+        double lotLong = getIntent().getDoubleExtra("lotLong", 0);
 //        boolean lotMotorcycle = getIntent().getBooleanExtra("lotMotorcycle", false);
 //        boolean lotCar = getIntent().getBooleanExtra("lotCar", false);
 //        boolean lotMoped = getIntent().getBooleanExtra("lotMoped", false);
@@ -69,6 +69,8 @@ public class lotInformation extends AppCompatActivity {
             public void onClick(View view) {
                 // Navigate to MapDestination activity
                 Intent intent = new Intent(lotInformation.this, MapDestination.class);
+                intent.putExtra("lotLat", lotLat);
+                intent.putExtra("lotLong", lotLong);
                 startActivity(intent);
             }
         });
