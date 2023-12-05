@@ -2,8 +2,10 @@ package com.cs407.madisonparkngo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -24,6 +26,7 @@ public class PreMap extends AppCompatActivity {
         String currentDate = dateFormat.format(calendar.getTime());
         TextView dateTextView = findViewById(R.id.dateTextView);
         dateTextView.setText("Today's Date: " + currentDate);
+        EditText destinationEditText = findViewById(R.id.destinationEditText);
 
         Button button = findViewById(R.id.getNearbyLotsButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -34,10 +37,14 @@ public class PreMap extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
         Button button2 = findViewById(R.id.continueButton);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String destination = destinationEditText.getText().toString();
                 // Start the SecondActivity
                 Intent intent = new Intent(PreMap.this, Map.class);
                 startActivity(intent);
