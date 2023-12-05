@@ -15,7 +15,7 @@
         />
 
     <ListView
-        android:id="@+id/notesListView"
+        android:id="@+id/locationListView"
         android:layout_width="match_parent"
         android:layout_height="680dp"
         android:layout_weight="1"
