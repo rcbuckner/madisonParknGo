@@ -464,22 +464,24 @@ public class Map extends FragmentActivity {
 
     private void handleMarkerClick(Marker marker) {
         // Start the LotInformation activity
-        Intent intent = new Intent(Map.this, lotInformation.class);
-        ParkingLot lot = dbHelper.userDao().getSpecificLot(marker.getTitle());
-        intent.putExtra("lotName", lot.getName());
-        intent.putExtra("lotAddress", lot.getAddress());
-        intent.putExtra("lotLat", lot.getLatitude());
-        intent.putExtra("lotLong", lot.getLongitude());
-        intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
-        intent.putExtra("lotCar", lot.allowsCar());
-        intent.putExtra("lotMoped", lot.allowsMoped());
-        intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
-        intent.putExtra("lotPermit", lot.getPermit());
-        intent.putExtra("lotCost", lot.getCost());
-        intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
+        if(!marker.getTitle().equals("Last Known Location")) {
+            Intent intent = new Intent(Map.this, lotInformation.class);
+            ParkingLot lot = dbHelper.userDao().getSpecificLot(marker.getTitle());
+            intent.putExtra("lotName", lot.getName());
+            intent.putExtra("lotAddress", lot.getAddress());
+            intent.putExtra("lotLat", lot.getLatitude());
+            intent.putExtra("lotLong", lot.getLongitude());
+            intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
+            intent.putExtra("lotCar", lot.allowsCar());
+            intent.putExtra("lotMoped", lot.allowsMoped());
+            intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
+            intent.putExtra("lotPermit", lot.getPermit());
+            intent.putExtra("lotCost", lot.getCost());
+            intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
 
-        // Add any other marker-specific data you need to pass
-        startActivity(intent);
+            // Add any other marker-specific data you need to pass
+            startActivity(intent);
+        }
     }
 
 
@@ -502,7 +504,7 @@ public class Map extends FragmentActivity {
                         mMap = googleMap;
 
                         BitmapDescriptor markerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN); // Replace HUE_BLUE with your desired color
-                        googleMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude())).title("Last Known Location").icon(markerIcon)););
+                        googleMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude())).title("Current Location").icon(markerIcon));
                         displayMyLocation();
                     });
                 }
