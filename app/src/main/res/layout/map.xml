@@ -46,7 +46,7 @@
         android:id="@+id/buttonProximityTop"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="Proximity to Destination"
+        android:text="Proximity to Current Location"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="155dp"
         tools:layout_editor_absoluteY="10dp" />
@@ -148,7 +148,7 @@
         android:id="@+id/buttonProximity"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="Proximity to Destination"
+        android:text="Proximity to Current Location"
         app:layout_constraintTop_toBottomOf="@id/buttonCost"
         tools:layout_editor_absoluteX="160dp"
         tools:layout_editor_absoluteY="160dp" />

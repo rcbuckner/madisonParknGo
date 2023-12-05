@@ -32,6 +32,7 @@ import java.util.List;
 
 public class Map extends FragmentActivity {
 
+
     private final LatLng mDestinationLatLng = new LatLng(43.0753,-89.4034);
     private GoogleMap mMap;
 
