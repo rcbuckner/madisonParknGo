@@ -29,7 +29,7 @@ public class lotInformation extends AppCompatActivity {
 //        float lotCost = getIntent().getFloatExtra("lotCost", 0);
 
 
-        String lotCost = getIntent().getStringExtra("lotCost");
+        Float lotCost = getIntent().getFloatExtra("lotCost", -1);
         String lotVehicles = buildVehicleString(
                 getIntent().getBooleanExtra("lotMotorcycle", false),
                 getIntent().getBooleanExtra("lotCar", false),
@@ -49,7 +49,7 @@ public class lotInformation extends AppCompatActivity {
         TextView textTitle = findViewById(R.id.lotTitle);
         TextView textInfo = findViewById(R.id.textInfo);
 
-        textCost.setText("Cost: " + (lotCost != null ? lotCost : "Not available"));
+        textCost.setText("Cost: " + (lotCost != -1 ? String.format("%.2f", lotCost) : "Not available"));
         textVehicles.setText("Vehicles: " + lotVehicles);
         textAddress.setText("Address: " + (lotAddress != null ? lotAddress : "Not available"));
         textLotType.setText("Lot Type: " + (lotTypeOfLot != null ? lotTypeOfLot : "Not available"));
