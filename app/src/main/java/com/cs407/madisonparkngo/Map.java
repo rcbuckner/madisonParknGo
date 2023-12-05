@@ -45,6 +45,7 @@ public class Map extends FragmentActivity {
 
     DBHelper dbHelper;
 
+    List<MarkerOptions> markerList = new ArrayList<MarkerOptions>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,10 @@ public class Map extends FragmentActivity {
         dbHelper = DBHelper.getDBInstance(this.getApplicationContext());
 
         locationList = dbHelper.userDao().getAllLots();
+
+        for (ParkingLot location : locationList) {
+            markerList.add(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
+        }
 
         updateMap(null);
 
@@ -122,6 +127,10 @@ public class Map extends FragmentActivity {
         Button buttonReset = findViewById(R.id.buttonResetFilters);
         buttonReset.setOnClickListener(v -> {
             locationList = dbHelper.userDao().getAllLots();
+            markerList = new ArrayList<MarkerOptions>();
+            for (ParkingLot location : locationList) {
+                markerList.add(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
+            }
             updateMap(null);
             Log.i("Reset List Size", "List Size: " + locationList.size());
         });
@@ -132,16 +141,26 @@ public class Map extends FragmentActivity {
         if (newLot != null) {
             Log.i("Pre Merge Size", "List Size: " + locationList.size());
             locationList = ListHelper.mergeLists(locationList, newLot);
-            Log.i("After-Merge Size", "List Size: " + locationList.size());
+
+            Log.i("After-Merge Size", "List Size: " + locationList.size() + ", " + markerList.size());
+
         }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
         mapFragment.getMapAsync(googleMap -> {
             mMap = googleMap;
 
-            // Loop through the list and add a marker for each location
-            for (ParkingLot location : locationList) {
-                googleMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).title(location.getName()));
+            if (newLot != null) {
+                for (int i = 0; i < markerList.size(); ++i) {
+                    if (!locationList.contains(dbHelper.userDao().getSpecificLot(markerList.get(i).getTitle()))) {
+                        markerList.remove(i);
+                    }
+                }
+            }
+            googleMap.clear();
+
+            for (MarkerOptions marker : markerList) {
+                googleMap.addMarker(marker);
             }
 
 

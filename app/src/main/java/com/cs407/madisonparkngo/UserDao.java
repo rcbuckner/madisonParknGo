@@ -29,8 +29,8 @@ public interface UserDao {
     @Query("SELECT * FROM parkinglot WHERE cost < :maxLimit AND cost > :minLimit")
     List<ParkingLot> getPricedLots(int maxLimit, int minLimit);
 
-    @Query("SELECT * FROM parkinglot WHERE lotID = :id")
-    ParkingLot getSpecificLOt(int id);
+    @Query("SELECT * FROM parkinglot WHERE name LIKE :lotName")
+    ParkingLot getSpecificLot(String lotName);
     @Insert
     void insertLot(ParkingLot... parkingLot);
 
