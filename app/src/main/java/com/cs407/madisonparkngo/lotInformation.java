@@ -29,7 +29,7 @@ public class lotInformation extends AppCompatActivity {
 //        float lotCost = getIntent().getFloatExtra("lotCost", 0);
 
 
-        Float lotCost = getIntent().getFloatExtra("lotCost", -1);
+
         String lotVehicles = buildVehicleString(
                 getIntent().getBooleanExtra("lotMotorcycle", false),
                 getIntent().getBooleanExtra("lotCar", false),
@@ -39,6 +39,7 @@ public class lotInformation extends AppCompatActivity {
         String lotPermit = getIntent().getStringExtra("lotPermit");
         String lotName = getIntent().getStringExtra("lotName");
         String lotSpecialInfo = getIntent().getStringExtra("lotSpecialInfo");
+        Float lotCost = DBHelper.getDBInstance(this.getApplicationContext()).userDao().getSpecificLot(lotName).getCost();
 
         // Find the TextViews by their IDs and update their text
         TextView textCost = findViewById(R.id.textCost);
@@ -49,7 +50,7 @@ public class lotInformation extends AppCompatActivity {
         TextView textTitle = findViewById(R.id.lotTitle);
         TextView textInfo = findViewById(R.id.textInfo);
 
-        textCost.setText("Cost: " + (lotCost != -1 ? String.format("%.2f", lotCost) : "Not available"));
+        textCost.setText("Cost: " + (lotCost != -1 ? "$" + String.format("%.2f", lotCost) + " per hour" : "Not available"));
         textVehicles.setText("Vehicles: " + lotVehicles);
         textAddress.setText("Address: " + (lotAddress != null ? lotAddress : "Not available"));
         textLotType.setText("Lot Type: " + (lotTypeOfLot != null ? lotTypeOfLot : "Not available"));
