@@ -393,9 +393,9 @@ public class Map extends FragmentActivity {
         intent.putExtra("lotAddress", lot.getAddress());
         intent.putExtra("lotLat", lot.getLatitude());
         intent.putExtra("lotLong", lot.getLongitude());
-        intent.putExtra("lotMotorcycle", lot.getMotorcycle());
-        intent.putExtra("lotCar", lot.getCar());
-        intent.putExtra("lotMoped", lot.getMoped());
+        intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
+        intent.putExtra("lotCar", lot.allowsCar());
+        intent.putExtra("lotMoped", lot.allowsMoped());
         intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
         intent.putExtra("lotPermit", lot.getPermit());
         intent.putExtra("lotCost", lot.getCost());
