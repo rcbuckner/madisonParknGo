@@ -37,7 +37,7 @@ public class MapDestination extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_destination);
 
-        // Show a Toast message
+
 
         // Get destination from intent
         float destLat = getIntent().getFloatExtra("lotLat", 0);

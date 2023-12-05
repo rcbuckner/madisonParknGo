@@ -24,7 +24,7 @@ public class PreMap extends AppCompatActivity {
         setContentView(R.layout.premap);
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(calendar.getTime());
         TextView dateTextView = findViewById(R.id.dateTextView);
         dateTextView.setText("Today's Date: " + currentDate);
