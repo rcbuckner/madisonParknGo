@@ -1,10 +1,11 @@
 package com.cs407.madisonparkngo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ListHelper {
-    public static ArrayList<ParkingLot> mergeLists(ArrayList<ParkingLot> list1, ArrayList<ParkingLot> list2) {
-        ArrayList<ParkingLot> out = new ArrayList<>();
+    public static List<ParkingLot> mergeLists(List<ParkingLot> list1, List<ParkingLot> list2) {
+       List<ParkingLot> out = new ArrayList<>();
         int lotID;
 
         for(int i = 0; i < list1.size(); i++) {
