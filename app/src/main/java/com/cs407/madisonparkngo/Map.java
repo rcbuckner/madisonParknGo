@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.PermissionRequest;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -422,22 +423,26 @@ public class Map extends FragmentActivity {
 
     private void handleMarkerClick(Marker marker) {
         // Start the LotInformation activity
-        Intent intent = new Intent(Map.this, lotInformation.class);
-        ParkingLot lot = dbHelper.userDao().getSpecificLot(marker.getTitle());
-        intent.putExtra("lotName", lot.getName());
-        intent.putExtra("lotAddress", lot.getAddress());
-        intent.putExtra("lotLat", lot.getLatitude());
-        intent.putExtra("lotLong", lot.getLongitude());
-        intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
-        intent.putExtra("lotCar", lot.allowsCar());
-        intent.putExtra("lotMoped", lot.allowsMoped());
-        intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
-        intent.putExtra("lotPermit", lot.getPermit());
-        intent.putExtra("lotCost", lot.getCost());
-        intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
+        if (marker.getTitle().equals("Last Known Location")) {
+            Toast.makeText(this.getApplicationContext(), "Current Location", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(Map.this, lotInformation.class);
+            ParkingLot lot = dbHelper.userDao().getSpecificLot(marker.getTitle());
+            intent.putExtra("lotName", lot.getName());
+            intent.putExtra("lotAddress", lot.getAddress());
+            intent.putExtra("lotLat", lot.getLatitude());
+            intent.putExtra("lotLong", lot.getLongitude());
+            intent.putExtra("lotMotorcycle", lot.allowsMotorcycle());
+            intent.putExtra("lotCar", lot.allowsCar());
+            intent.putExtra("lotMoped", lot.allowsMoped());
+            intent.putExtra("lotTypeOfLot", lot.getTypeOfLot());
+            intent.putExtra("lotPermit", lot.getPermit());
+            intent.putExtra("lotCost", lot.getCost());
+            intent.putExtra("lotSpecialInfo", lot.getSpecialInfo());
 
-        // Add any other marker-specific data you need to pass
-        startActivity(intent);
+            // Add any other marker-specific data you need to pass
+            startActivity(intent);
+        }
     }
 
 
