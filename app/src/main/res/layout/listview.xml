@@ -6,21 +6,26 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/buttonMapview"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Map View"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/locationListView"
-        android:layout_width="match_parent"
-        android:layout_height="680dp"
-        android:layout_weight="1"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        <ListView
+            android:id="@+id/locationListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/buttonMapview"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Map View" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

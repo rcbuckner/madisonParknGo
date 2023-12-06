@@ -7,193 +7,156 @@
     tools:context=".MainActivity">
 
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <Button
-        android:id="@+id/buttonVehicleType"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Vehicle Type"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        />
+        <Button
+            android:id="@+id/buttonVehicleType"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Vehicle Type"
 
-    <Button
-        android:id="@+id/buttonTypeOfLotTop"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Type of Lot"
-        app:layout_constraintTop_toTopOf="parent"
-     />
-    <Button
-        android:id="@+id/buttonCostTop"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Cost"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+            />
 
-    <Button
-        android:id="@+id/buttonProximityTop"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Proximity to Current Location"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        <Button
+            android:id="@+id/buttonTypeOfLotTop"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Type of Lot" />
 
-    //All second layer buttons below
-    <Button
-        android:id="@+id/buttonLotType"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Type of Lot"
-        app:layout_constraintTop_toBottomOf="@id/buttonVehicleType"
-         />
+        <Button
+            android:id="@+id/buttonCostTop"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Cost" />
 
-    <Button
-        android:id="@+id/buttonMoped"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Moped"
-        app:layout_constraintTop_toBottomOf="@id/buttonVehicleType"
-        />
+        <Button
+            android:id="@+id/buttonProximityTop"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Proximity to Current Location" />
 
-    <Button
-        android:id="@+id/buttonGarage"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Garage"
-        app:layout_constraintTop_toBottomOf="@id/buttonTypeOfLotTop"
-         />
+        <Button
+            android:id="@+id/buttonMoped"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Moped" />
 
-    <Button
-        android:id="@+id/buttonLowCost"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="$0-$1"
-        app:layout_constraintTop_toBottomOf="@id/buttonCostTop"
-         />
+        <Button
+            android:id="@+id/buttonCar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Car" />
 
-    <Button
-        android:id="@+id/buttonDestinationSmall"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="0 - 0.5 miles"
-        app:layout_constraintTop_toBottomOf="@id/buttonProximityTop"
-         />
+        <Button
+            android:id="@+id/buttonMotorcycle"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="MotorCycle" />
 
-    //Third layer buttons below
-    <Button
-        android:id="@+id/buttonCost"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Cost"
-        app:layout_constraintTop_toBottomOf="@id/buttonLotType"
-        />
+        <Button
+            android:id="@+id/buttonLotType"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Type of Lot" />
 
-    <Button
-        android:id="@+id/buttonCar"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Car"
-        app:layout_constraintTop_toBottomOf="@id/buttonMoped"
-         />
+        <Button
+            android:id="@+id/buttonGarage"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Garage" />
 
-    <Button
-        android:id="@+id/buttonSurfaceLot"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Surface Lot"
-        app:layout_constraintTop_toBottomOf="@id/buttonGarage"
-        />
+        <Button
+            android:id="@+id/buttonSurfaceLot"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Surface Lot" />
 
-    <Button
-        android:id="@+id/buttonCostMedium"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="$1-$2"
-        app:layout_constraintTop_toBottomOf="@id/buttonLowCost"
-         />
+        <Button
+            android:id="@+id/buttonStreet"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Street" />
 
-    <Button
-        android:id="@+id/buttonDestinationMedium"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="0.5 - 1 mile"
-        app:layout_constraintTop_toBottomOf="@id/buttonDestinationSmall"
-         />
+        <Button
+            android:id="@+id/buttonCost"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Cost" />
 
-    //Fourth layer buttons below
-    <Button
-        android:id="@+id/buttonProximity"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Proximity to Current Location"
-        app:layout_constraintTop_toBottomOf="@id/buttonCost"
-        />
+        <Button
+            android:id="@+id/buttonLowCost"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="$0-$1" />
 
-    <Button
-        android:id="@+id/buttonMotorcycle"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="MotorCycle"
-        app:layout_constraintTop_toBottomOf="@id/buttonCar"
-         />
+        <Button
+            android:id="@+id/buttonCostMedium"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="$1-$2" />
 
-    <Button
-        android:id="@+id/buttonStreet"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Street"
-        app:layout_constraintTop_toBottomOf="@id/buttonSurfaceLot"
-         />
+        <Button
+            android:id="@+id/buttonCostHigh"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="More than $2" />
 
-    <Button
-        android:id="@+id/buttonCostHigh"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="More than $2"
-        app:layout_constraintTop_toBottomOf="@id/buttonCostMedium"
-         />
+        <Button
+            android:id="@+id/buttonProximity"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Proximity to Current Location" />
 
-    <Button
-        android:id="@+id/buttonDestinationHigh"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="More than 1 miles"
-        app:layout_constraintTop_toBottomOf="@id/buttonDestinationMedium"
-        />
+        <Button
+            android:id="@+id/buttonDestinationSmall"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="0 - 0.5 miles" />
 
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="Back"
-        app:layout_constraintTop_toBottomOf="@id/buttonProximity"
-         />
+        <Button
+            android:id="@+id/buttonDestinationMedium"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="0.5 - 1 mile" />
 
+        <Button
+            android:id="@+id/buttonDestinationHigh"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="More than 1 miles" />
 
-    <Button
-        android:id="@+id/buttonListview"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginBottom="56dp"
-        android:text="List View"
-        app:layout_constraintBottom_toBottomOf="parent"
-         />
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Back" />
 
-    <Button
-        android:id="@+id/buttonResetFilters"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginBottom="11dp"
-        android:text="Reset Filters"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <fragment
+            android:id="@+id/fragment_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/buttonResetFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset Filters" />
+
+        <Button
+            android:id="@+id/buttonListview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List View" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
